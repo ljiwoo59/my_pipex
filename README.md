@@ -9,7 +9,7 @@ Code UNIX mechanism
 
 ## Used functions
 
-#### *int open(const char *path, int oflag, ...);*
+*#### int open(const char *path, int oflag, ...);*
 * Opens **file1** with *O_RDONLY* flag
 * Opens **file2** with *O_WRONLY*, *O_CREAT*, *O_TRUNC* giving file permission as **666**
   - *O_CREAT* : *file2* will be created if there has no such file
