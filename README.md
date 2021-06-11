@@ -5,7 +5,7 @@ Code UNIX mechanism
 ```
 < file1 cmd1 | cmd2 > file2
 ```
-* cmd1 takes file1 as an input, and cmd2 takes an output of cmd1 as an input, then returns an output to file2
+* **cmd1** takes **file1** as an input, and **cmd2** takes an output of **cmd1** as an input, then returns an output to **file2**
 
 ## Used functions
 #### *int open(const char *path, int oflag, ...);*
