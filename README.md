@@ -34,11 +34,11 @@ Code UNIX mechanism
   - fildes[1] : input
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
-#### *dup2(int fildes, int fildes2);*
+#### *int dup2(int fildes, int fildes2);*
 * Duplicates fildes to fildes2
 * Returns the new file descriptor, otherwise returns -1 with *errno*
 
-#### *execve(const char *path, char *const argv[], char *const envp[]);*
+#### *int execve(const char *path, char *const argv[], char *const envp[]);*
 * Overlays the current process images to new process image
   - **path** : indicates executable object file or file of data for an interpreter
   - **argv** : the argument lists to be made available to the new process
