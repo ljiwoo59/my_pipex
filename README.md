@@ -8,6 +8,7 @@ Code UNIX mechanism
 * **cmd1** takes **file1** as an input, and **cmd2** takes an output of **cmd1** as an input, then returns an output to **file2**
 
 ## Used functions
+
 #### *int open(const char *path, int oflag, ...);*
 * Opens **file1** with *O_RDONLY* flag
 * Opens **file2** with *O_WRONLY*, *O_CREAT*, *O_TRUNC* giving file permission as **666**
