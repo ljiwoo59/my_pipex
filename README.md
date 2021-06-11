@@ -8,25 +8,25 @@
 * cmd1 takes file1 as an input, and cmd2 takes an output of cmd1 as an input, then returns an output to file2
 
 ## Used functions
-#### int open(const char *path, int oflag, ...);
+#### *int open(const char *path, int oflag, ...);*
 * Opens **file1** with *O_RDONLY* flag
 * Opens **file2** with *O_WRONLY*, *O_CREAT*, *O_TRUNC* giving file permission as **666**
   - *O_CREAT* : *file2* will be created if there has no such file
   - *O_TRUNC* : if *file2* already exists, *file2* will be truncated size to 0
 * Returns non-negative file descriptor if successful, otherwise returns -1 with *errno*
   
-#### int close(int fildes);
+#### *int close(int fildes);*
 * Deletes a descriptor
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
-#### pid_t waitpid(pid_t pid, int *stat_loc, int options);
+#### *pid_t waitpid(pid_t pid, int *stat_loc, int options);*
 * Waits for certain child processes
   - **pid** : specifies the set of child processes for which to wait
   - **stac_loc** : contains termination information about the process that exited
   - **options** : WNOHANG option, WUNTRACED option *(man 2 waitpid)*
 * Returns pid of child process if child process is stopped or terminated, otherwise returns -1 with *errno*
 
-#### int pipe(int fildes[2]);
+#### *int pipe(int fildes[2]);*
 * Creates a **pipe** with unidirectional data flow and allocates a pair of file descriptors
 * Allows the output of one program to be sent to another program
 * Data written to fildes[1] can be read from fildes[0]
@@ -34,11 +34,11 @@
   - fildes[1] : input
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
-#### dup2(int fildes, int fildes2);
+#### *dup2(int fildes, int fildes2);*
 * Duplicates fildes to fildes2
 * Returns the new file descriptor, otherwise returns -1 with *errno*
 
-#### execve(const char *path, char *const argv[], char *const envp[]);
+#### *execve(const char *path, char *const argv[], char *const envp[]);*
 * Overlays the current process images to new process image
   - **path** : indicates executable object file or file of data for an interpreter
   - **argv** : the argument lists to be made available to the new process
@@ -46,14 +46,14 @@
   - **envp** : Passes information to the new process that is not directly an argument to the command
 * Successful call has no process to return to, otherwise returns to the calling process with *errno*
 
-#### pid_t fork(void);
+#### *pid_t fork(void);*
 * Creates child process as an exact copy of the callling process
 * Returns 0 to the child process and returns pid of the child process to the parent process, otherwise returns -1 with *errno*
 
-#### void perror(const char *s);
+#### *void perror(const char *s);*
 * Finds the error message corresponding to the current value of the global variable *errno* and writes it followed by a new line
 
-#### char *strerror(int errnum);
+#### *char *strerror(int errnum);*
 * Accepts an error number argument *errnum* and returns a pointer to the corresponding message string
 
 
