@@ -1,5 +1,5 @@
 # my_pipex
-&lt; Code UNIX mechanism
+Code UNIX mechanism
 
 * The execution will be as same as the following shell command:
 ```
