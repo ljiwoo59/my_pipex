@@ -9,7 +9,8 @@ Code UNIX mechanism
 
 ## Used functions
 
-*#### int open(const char *path, int oflag, ...);*
+#### *int open(const char *path, int oflag, ...);*
+
 * Opens **file1** with *O_RDONLY* flag
 * Opens **file2** with *O_WRONLY*, *O_CREAT*, *O_TRUNC* giving file permission as **666**
   - *O_CREAT* : *file2* will be created if there has no such file
@@ -17,10 +18,12 @@ Code UNIX mechanism
 * Returns non-negative file descriptor if successful, otherwise returns -1 with *errno*
   
 #### *int close(int fildes);*
+
 * Deletes a descriptor
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
 #### *pid_t waitpid(pid_t pid, int *stat_loc, int options);*
+
 * Waits for certain child processes
   - **pid** : specifies the set of child processes for which to wait
   - **stac_loc** : contains termination information about the process that exited
@@ -28,6 +31,7 @@ Code UNIX mechanism
 * Returns pid of child process if child process is stopped or terminated, otherwise returns -1 with *errno*
 
 #### *int pipe(int fildes[2]);*
+
 * Creates a **pipe** with unidirectional data flow and allocates a pair of file descriptors
 * Allows the output of one program to be sent to another program
 * Data written to fildes[1] can be read from fildes[0]
@@ -36,10 +40,12 @@ Code UNIX mechanism
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
 #### *int dup2(int fildes, int fildes2);*
+
 * Duplicates fildes to fildes2
 * Returns the new file descriptor, otherwise returns -1 with *errno*
 
 #### *int execve(const char *path, char *const argv[], char *const envp[]);*
+
 * Overlays the current process images to new process image
   - **path** : indicates executable object file or file of data for an interpreter
   - **argv** : the argument lists to be made available to the new process
@@ -48,13 +54,16 @@ Code UNIX mechanism
 * Successful call has no process to return to, otherwise returns to the calling process with *errno*
 
 #### *pid_t fork(void);*
+
 * Creates child process as an exact copy of the callling process
 * Returns 0 to the child process and returns pid of the child process to the parent process, otherwise returns -1 with *errno*
 
 #### *void perror(const char *s);*
+
 * Finds the error message corresponding to the current value of the global variable *errno* and writes it followed by a new line
 
 #### *char *strerror(int errnum);*
+
 * Accepts an error number argument *errnum* and returns a pointer to the corresponding message string
 
 
