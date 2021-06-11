@@ -9,7 +9,7 @@ Code UNIX mechanism
 
 ## Used functions
 
-#### *int open(const char *path, int oflag, ...);*
+#### _int open(const char *path, int oflag, ...);_
 
 * Opens **file1** with *O_RDONLY* flag
 * Opens **file2** with *O_WRONLY*, *O_CREAT*, *O_TRUNC* giving file permission as **666**
@@ -17,12 +17,12 @@ Code UNIX mechanism
   - *O_TRUNC* : if *file2* already exists, *file2* will be truncated size to 0
 * Returns non-negative file descriptor if successful, otherwise returns -1 with *errno*
   
-#### *int close(int fildes);*
+#### _int close(int fildes);_
 
 * Deletes a descriptor
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
-#### *pid_t waitpid(pid_t pid, int *stat_loc, int options);*
+#### _pid_t waitpid(pid_t pid, int *stat_loc, int options);_
 
 * Waits for certain child processes
   - **pid** : specifies the set of child processes for which to wait
@@ -30,7 +30,7 @@ Code UNIX mechanism
   - **options** : WNOHANG option, WUNTRACED option *(man 2 waitpid)*
 * Returns pid of child process if child process is stopped or terminated, otherwise returns -1 with *errno*
 
-#### *int pipe(int fildes[2]);*
+#### _int pipe(int fildes[2]);_
 
 * Creates a **pipe** with unidirectional data flow and allocates a pair of file descriptors
 * Allows the output of one program to be sent to another program
@@ -39,12 +39,12 @@ Code UNIX mechanism
   - fildes[1] : input
 * Returns 0 if successful, otherwise returns -1 with *errno*
 
-#### *int dup2(int fildes, int fildes2);*
+#### _int dup2(int fildes, int fildes2);_
 
 * Duplicates fildes to fildes2
 * Returns the new file descriptor, otherwise returns -1 with *errno*
 
-#### *int execve(const char *path, char *const argv[], char *const envp[]);*
+#### _int execve(const char *path, char *const argv[], char *const envp[]);_
 
 * Overlays the current process images to new process image
   - **path** : indicates executable object file or file of data for an interpreter
@@ -53,16 +53,16 @@ Code UNIX mechanism
   - **envp** : Passes information to the new process that is not directly an argument to the command
 * Successful call has no process to return to, otherwise returns to the calling process with *errno*
 
-#### *pid_t fork(void);*
+#### _pid_t fork(void);_
 
 * Creates child process as an exact copy of the callling process
 * Returns 0 to the child process and returns pid of the child process to the parent process, otherwise returns -1 with *errno*
 
-#### *void perror(const char *s);*
+#### _void perror(const char *s);_
 
 * Finds the error message corresponding to the current value of the global variable *errno* and writes it followed by a new line
 
-#### *char *strerror(int errnum);*
+#### _char *strerror(int errnum);_
 
 * Accepts an error number argument *errnum* and returns a pointer to the corresponding message string
 
