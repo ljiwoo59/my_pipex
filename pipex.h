@@ -7,6 +7,7 @@
 # include <sys/wait.h>
 # include <stdio.h>
 # include <sys/errno.h>
+# include <string.h>
 
 typedef struct s_cmd
 {
@@ -22,6 +23,8 @@ void ft_strcpy(char *arr, char *start, char *end);
 char **ft_split(char *s, char c);
 char *ft_strjoin(char *s1, char *s2);
 int ft_strlen(char *s);
-void error(int i);
+void error(int i, char *s);
+char	*ft_lower(char *s);
+char	*ft_strdup(char *s1, int size);
 
 #endif

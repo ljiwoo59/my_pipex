@@ -17,10 +17,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 
 	if (!s1 && !s2)
-		error(1);
+		error(1, 0);
 	size = ft_strlen(s1) + ft_strlen(s2);
 	if (!(arr = (char *)malloc(size + 1)))
-		error(0);
+		error(0, 0);
 	i = 0;
 	while (*s1)
 		arr[i++] = *s1++;

@@ -39,7 +39,7 @@ char			**ft_split(char *s, char c)
 	int		i;
 
 	if (!(arr = (char **)malloc(sizeof(char *) * (ft_wordcount(s, c) + 1))))
-		error(0);
+		error(0, 0);
 	i = 0;
 	while (*s)
 	{
@@ -49,7 +49,7 @@ char			**ft_split(char *s, char c)
 			while (*s != c && *s)
 				s++;
 			if (!(arr[i] = (char *)malloc(s - start + 1)))
-				error(0);
+				error(0, 0);
 			ft_strcpy(arr[i++], start, s);
 		}
 		if (*s)

@@ -5,9 +5,9 @@ void set_in(char *file1)
 	int fd;
 
 	if ((fd = open(file1, O_RDONLY)) < 0)
-		error(0);
+		error(0, file1);
 	if (dup2(fd, STDIN_FILENO) < 0)
-		error(0);
+		error(0, file1);
 	close(fd);
 }
 
@@ -16,16 +16,16 @@ void set_out(char *file2)
 	int fd;
 
 	if ((fd = open(file2, O_WRONLY | O_CREAT | O_TRUNC, 0666)) < 0)
-		error(0);
+		error(0, file2);
 	if (dup2(fd, STDOUT_FILENO) < 0)
-		error(0);
+		error(0, file2);
 	close(fd);
 }
 
 void set_pipe(int *fildes, int fd)
 {
 	if (dup2(fildes[fd], fd) < 0)
-		error(0);
+		error(0, 0);
 	close(fildes[0]);
 	close(fildes[1]);
 }
@@ -37,6 +37,13 @@ void command(char *cmd)
 	int i;
 
 	cmd_arr = ft_split(cmd, ' ');
+	if (cmd_arr[0] == 0)
+	{
+		if (cmd[0] == 0)
+			error(3, cmd);
+		else
+			error(2, cmd);
+	}
 	cmmd.cmd[0] = ft_strjoin("/bin/", cmd_arr[0]);
 	cmmd.cmd[1] = ft_strjoin("/usr/local/bin/", cmd_arr[0]);
 	cmmd.cmd[2] = ft_strjoin("/usr/bin/", cmd_arr[0]);
@@ -45,7 +52,7 @@ void command(char *cmd)
 	i = 0;
 	while (i < 5)
 		execve(cmmd.cmd[i++], cmd_arr, 0);
-	error(0);
+	error(2, cmd);
 }
 
 int main(int argc, char *argv[])
@@ -55,11 +62,11 @@ int main(int argc, char *argv[])
 	int fildes[2];
 
 	if (argc != 5)
-		error(1);
+		error(1, 0);
 	if (pipe(fildes) < 0)
-		error(0);
+		error(0, 0);
 	if ((pid = fork()) < 0)
-		error(0);
+		error(0, 0);
 	else if (pid == 0)
 	{
 		set_in(argv[1]);
@@ -71,9 +78,7 @@ int main(int argc, char *argv[])
 		set_out(argv[4]);
 		set_pipe(fildes, STDIN_FILENO);
 		if (waitpid(pid, &status, 0) < 0)
-			error(0);
-		if (WIFEXITED(status) == 0)
-			exit(1);
+			error(0, 0);
 		command(argv[3]);
 	}
 	return (0);
